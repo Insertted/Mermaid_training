@@ -146,6 +146,79 @@ stateDiagram-v2
     Отмененный --> [*] : завершить
 ```
 
+## 4.1
+
+```mermaid
+journey
+    title User Journey Map: Покупка билетов в кино
+    section Поиск фильма
+      Просмотр афиши: 5: Пользователь
+      Выбор фильма: 4: Пользователь
+    section Выбор сеанса
+      Выбор времени: 4: Пользователь
+      Проверка расписания: 3: Пользователь
+    section Выбор мест
+      Просмотр схемы зала: 5: Пользователь
+      Выбор удобных мест: 5: Пользователь
+    section Оплата
+      Ввод данных карты: 2: Пользователь
+      Подтверждение оплаты: 4: Пользователь
+    section Получение билетов
+      Получение на email: 5: Пользователь
+      Сохранение билетов: 4: Пользователь
+    section Завершение
+      Подготовка к походу: 5: Пользователь
+```
+
+
+# 4.2
+
+```mermaid
+erDiagram
+    USERS {
+        int id PK
+        string name
+        string email
+        datetime created_at
+    }
+    
+    POSTS {
+        int id PK
+        text content
+        int author_id FK
+        datetime created_at
+    }
+    
+    COMMENTS {
+        int id PK
+        text content
+        int post_id FK
+        int author_id FK
+        datetime created_at
+    }
+    
+    LIKES {
+        int user_id FK
+        int post_id FK
+        datetime created_at
+    }
+    
+    SUBSCRIPTIONS {
+        int subscriber_id FK
+        int target_id FK
+        datetime created_at
+    }
+
+    USERS ||--o{ POSTS : creates
+    USERS ||--o{ COMMENTS : writes
+    USERS ||--o{ LIKES : gives
+    POSTS ||--o{ COMMENTS : has
+    POSTS ||--o{ LIKES : receives
+    USERS ||--o{ SUBSCRIPTIONS : "subscribes from"
+    USERS }o--o{ SUBSCRIPTIONS : "subscribes to"
+```
+
+
 
 ## 6
 
