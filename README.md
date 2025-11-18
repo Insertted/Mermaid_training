@@ -224,8 +224,6 @@ erDiagram
 
 ```mermaid
 pie title Доли рынка
-    "Apple" : 45
-    "Samsung" : 30
-    "Xiaomi" : 15
-    "Другие" : 10
+    "Отечественные" : 45
+    "Иномарки" : 55
 ```
